@@ -208,14 +208,14 @@ var BIN_ID = "6af38e8fac6210605a7e1f5a";
 var MASTER_KEY = "$2a$10$YxBmHW9ETAGom9Uh6yDL1OPBd1hYLMCC5tgt85AFlhPFFNqV7Ytju";
 var BIN_URL = "https://api.jsonbin.io/v3/b/" + BIN_ID;
 var ADMIN_PASS = "@Cedric9606";
-var IC_EDIT = 'Modifier';
-var IC_TRASH = 'Supprimer';
-var IC_EYE = 'Afficher';
-var IC_HIDE = 'Masquer';
-var IC_BAG = '';
-var IC_FOLDER = '';
-var IC_IMG = '';
-var IC_STAR = '*';
+var IC_EDIT = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>';
+var IC_TRASH = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>';
+var IC_EYE = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
+var IC_HIDE = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.94 10.94 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/></svg>';
+var IC_BAG = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/></svg>';
+var IC_FOLDER = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>';
+var IC_IMG = '<svg class="ic-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/></svg>';
+var IC_STAR = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
 async function chargerEnLigne(){
   try{ var r = await fetch(BIN_URL + "/latest", {headers:{"X-Master-Key":MASTER_KEY}}); var j = await r.json(); return j.record; }catch(e){ return null; }
 }
