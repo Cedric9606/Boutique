@@ -15,7 +15,7 @@ p{opacity:.7;font-size:13px;margin:6px 0 16px}
 .card h2{font-size:16px;margin-bottom:12px;color:#00C2FF;display:flex;align-items:center;gap:8px}
 label{font-size:12px;font-weight:800;display:flex;align-items:center;gap:6px;margin:10px 0 5px;opacity:.8}
 input,select{width:100%;padding:12px 10px;border-radius:10px;border:1px solid #2A3A5E;background:#0A1833;color:#fff;outline:none;font-size:14px;display:block}
-button{width:100%;padding:13px 10px;border:none;border-radius:12px;font-weight:900;cursor:pointer;font-size:14px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px}
+button{width:100%;padding:13px 10px;border:none;border-radius:12px;font-weight:900;cursor:pointer;font-size:14px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;position:relative;z-index:10}
 .btn-blue{background:linear-gradient(135deg,#0B6CFF,#00C2FF);color:#fff}
 .btn-green{background:#25D366;color:#fff}
 .btn-red{background:#FF2D55;color:#fff;padding:8px 10px;font-size:12px;width:auto;margin-top:0}
@@ -60,42 +60,32 @@ input[type=file]{display:none}
 .stat span{font-size:11px;opacity:.7;display:flex;align-items:center;justify-content:center;gap:5px}
 .ic{width:18px;height:18px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ic-sm{width:14px;height:14px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-box{width:32px;height:32px;border-radius:9px;background:rgba(0,194,255,.15);display:grid;place-items:center;flex-shrink:0}
-.ic-box .ic{color:#00C2FF}
-.btn-link{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;width:100%;padding:13px 10px;border-radius:12px;font-weight:900;font-size:14px;margin-top:12px}
+.ic-box{width:32px;height:32px;border-radius:9px;background:rgba(0,194,255,.15);display:grid;place-items:center;flex-shrink:0;animation:float 2.5s infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes wiggle{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+.ic-box .ic{color:#00C2FF;animation:wiggle 2.5s infinite}
+.banner-preview{border-radius:12px;padding:14px;margin-top:10px;color:#fff}
+.banner-preview b{font-size:15px;display:block}
+.banner-preview span{font-size:12px;opacity:.85;display:block;margin-top:4px}
 </style>
 </head>
 <body>
 <div id="login">
 <h1 style="justify-content:center">
-<span class="ic-box">
-<svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-</span>
+<span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
 CEDRIC<span>SHOP</span> ADMIN
 </h1>
 <p>Gere tout ton site ici</p>
 <div class="card">
-<label>
-<svg class="ic-sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-Mot de passe
-</label>
+<label><svg class="ic-sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Mot de passe</label>
 <input id="pass" type="password" placeholder="....">
-<button class="btn-blue" onclick="login()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-Entrer
-</button>
-<a href="index.html" class="btn-link btn-dark">
-<svg class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-Voir le site
-</a>
+<button class="btn-blue" onclick="login()"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg> Entrer</button>
+<button type="button" class="btn-dark" onclick="window.location.href='index.html'"><svg class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Voir le site</button>
 </div>
 </div>
 <div id="panel" class="hidden">
 <div class="top">
-<h1>
-<span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
-CEDRIC<span>SHOP</span> ADMIN
-</h1>
+<h1><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> CEDRIC<span>SHOP</span> ADMIN</h1>
 <span class="badge" id="countBadge">0 produits</span>
 </div>
 <div class="wrap">
@@ -106,180 +96,110 @@ CEDRIC<span>SHOP</span> ADMIN
 <div class="stat"><b id="statActive">0</b><span><svg class="ic-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> En ligne</span></div>
 </div>
 <div class="tabs">
-<button id="tabBtn-promo" class="active" onclick="showTab('promo')">
-<svg class="ic" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-Promo
-</button>
-<button id="tabBtn-cats" onclick="showTab('cats')">
-<svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
-Categories
-</button>
-<button id="tabBtn-prods" onclick="showTab('prods')">
-<svg class="ic" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-Produits
-</button>
+<button id="tabBtn-promo" class="active" onclick="showTab('promo')"><svg class="ic" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg> Promo</button>
+<button id="tabBtn-banner" onclick="showTab('banner')"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg> Banniere</button>
+<button id="tabBtn-cats" onclick="showTab('cats')"><svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg> Categories</button>
+<button id="tabBtn-prods" onclick="showTab('prods')"><svg class="ic" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Produits</button>
 </div>
 <div id="tab-promo">
 <div class="card">
-<h2>
-<span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/></svg></span>
-Annonce Promotion
-</h2>
-<label>
-<svg class="ic-sm" viewBox="0 0 24 24"><path d="M12 2H2v10l9.29-9.29a1 1 0 0 1 1.42 1.42L4.42 12.42"/></svg>
-Titre promo
-</label>
-<input id="promoTitle" placeholder="-30% Aujourd'hui">
-<label>
-<svg class="ic-sm" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-Sous-titre promo
-</label>
-<input id="promoSub" placeholder="Sur toutes les montres & parfums">
-<label>
-<svg class="ic-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-Badge en haut
-</label>
-<input id="promoBadge" placeholder="-30% AUJOURD'HUI">
-<button class="btn-blue" onclick="savePromo()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
-Enregistrer la promo
-</button>
+<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/></svg></span> Annonce Promotion</h2>
+<label>Titre promo</label><input id="promoTitle" placeholder="-30% Aujourd'hui">
+<label>Sous-titre promo</label><input id="promoSub" placeholder="Sur toutes les montres & parfums">
+<label>Badge en haut</label><input id="promoBadge" placeholder="-30% AUJOURD'HUI">
+<button class="btn-blue" onclick="savePromo()"><svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg> Enregistrer la promo</button>
 </div>
 <div class="card">
-<h2>
-<span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></span>
-Titre du haut
-</h2>
+<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></span> Titre du haut</h2>
 <label>Ligne 1</label><input id="hero1" placeholder="LE STYLE QUI">
 <label>Ligne 2</label><input id="hero2" placeholder="TE RESSEMBLE,">
 <label>Ligne 3 (en bleu)</label><input id="hero3" placeholder="AU MEILLEUR PRIX.">
-<button class="btn-blue" onclick="saveHero()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>
-Enregistrer le titre
-</button>
+<button class="btn-blue" onclick="saveHero()"><svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg> Enregistrer le titre</button>
 </div>
+</div>
+<div id="tab-banner" class="hidden">
+<div class="card">
+<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/></svg></span> Banniere 1 - Bleue</h2>
+<label>Titre</label><input id="b1Title" placeholder="LIVRAISON GRATUITE des 30 000 FCFA">
+<label>Sous-titre</label><input id="b1Sub" placeholder="Commande aujourd'hui, recois demain...">
+<label>Texte du bouton</label><input id="b1Btn" placeholder="En profiter">
+<label>Grand texte a droite</label><input id="b1Big" placeholder="-30%">
+<div class="banner-preview" id="b1Prev" style="background:linear-gradient(135deg,#0B6CFF,#00C2FF)"><b>Apercu Banniere 1</b><span>Change le texte, l'apercu change.</span></div>
+</div>
+<div class="card">
+<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/></svg></span> Banniere 2 - Noire</h2>
+<label>Titre</label><input id="b2Title" placeholder="NOUVEAUTE : PRODUITS DIGITAL">
+<label>Sous-titre</label><input id="b2Sub" placeholder="Formation, Ebook, Abonnement...">
+<label>Texte du bouton</label><input id="b2Btn" placeholder="Voir le Digital">
+<label>Grand texte a droite</label><input id="b2Big" placeholder="100%">
+<div class="banner-preview" id="b2Prev" style="background:linear-gradient(135deg,#050E24,#0A2A66)"><b>Apercu Banniere 2</b><span>Change le texte, l'apercu change.</span></div>
+</div>
+<div class="card">
+<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/></svg></span> Banniere 3 - Verte</h2>
+<label>Titre</label><input id="b3Title" placeholder="PAIEMENT MOMO OU A LA LIVRAISON">
+<label>Sous-titre</label><input id="b3Sub" placeholder="Tu paies comme tu veux...">
+<label>Texte du bouton</label><input id="b3Btn" placeholder="Commander sur WhatsApp">
+<label>Grand texte a droite</label><input id="b3Big" placeholder="24h">
+<div class="banner-preview" id="b3Prev" style="background:linear-gradient(135deg,#25D366,#0a9d3a)"><b>Apercu Banniere 3</b><span>Change le texte, l'apercu change.</span></div>
+</div>
+<button class="btn-blue" onclick="saveBanners()"><svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg> Enregistrer les 3 bannieres</button>
+<button class="btn-dark" onclick="resetBanners()">Remettre les bannieres d'origine</button>
 </div>
 <div id="tab-cats" class="hidden">
 <div class="card" id="catFormCard">
-<h2 id="catFormTitle">
-<span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
-<span>Ajouter une categorie</span>
-</h2>
-<label>
-<svg class="ic-sm" viewBox="0 0 24 24"><path d="M12 2H2v10l9.29-9.29a1 1 0 0 1 1.42 1.42L4.42 12.42"/></svg>
-Nom
-</label>
-<input id="catName" placeholder="Ex: Lunettes">
+<h2 id="catFormTitle"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span> <span>Ajouter une categorie</span></h2>
+<label>Nom</label><input id="catName" placeholder="Ex: Lunettes">
 <label>ID (minuscule, sans espace)</label><input id="catId" placeholder="Ex: lunettes">
 <label>Description</label><input id="catDesc" placeholder="Ex: Lunettes de soleil - Livraison 24h">
-<button class="btn-green" id="catSaveBtn" onclick="saveCategory()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-Ajouter la categorie
-</button>
-<button class="btn-dark hidden" id="catCancelBtn" onclick="cancelCatEdit()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-Annuler la modification
-</button>
+<label>Photo de la categorie</label>
+<button type="button" class="btn-photo" onclick="document.getElementById('catPhotoFile').click()">Ajouter une photo pour cette categorie</button>
+<input type="file" id="catPhotoFile" accept="image/*" onchange="onCatPhotoPick(event)">
+<div id="catPhotoPreview" style="margin-top:10px"></div>
+<div class="photo-hint">Si tu ne mets pas de photo, on met une photo par defaut.</div>
+<button type="button" class="btn-dark" onclick="removeCatPhoto()" style="padding:10px;font-size:12px">Retirer la photo</button>
+<label>Ou coller un lien image pour la categorie</label>
+<div class="row"><div><input id="catImgLink" placeholder="https://..."></div><div><button type="button" class="btn-blue" style="margin-top:0" onclick="addCatLink()">Utiliser ce lien</button></div></div>
+<button class="btn-green" id="catSaveBtn" onclick="saveCategory()"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg> Ajouter la categorie</button>
+<button class="btn-dark hidden" id="catCancelBtn" onclick="cancelCatEdit()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Annuler la modification</button>
 </div>
 <div class="card">
-<h2>
-<span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></span>
-Toutes les categories (<span id="catCount"></span>)
-</h2>
-<p>Clique sur Modifier pour changer le nom, la description, etc.</p>
+<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></span> Toutes les categories (<span id="catCount"></span>)</h2>
 <div id="catList"></div>
 </div>
 </div>
 <div id="tab-prods" class="hidden">
 <div class="card" id="prodFormCard">
-<h2 id="prodFormTitle">
-<span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
-<span>Ajouter un produit</span>
-</h2>
-<label>
-<svg class="ic-sm" viewBox="0 0 24 24"><path d="M12 2H2v10l9.29-9.29a1 1 0 0 1 1.42 1.42L4.42 12.42"/></svg>
-Nom du produit
-</label>
-<input id="pName" placeholder="Ex: Lunettes de soleil Noir">
-<div class="row">
-<div><label>Prix (FCFA)</label><input id="pPrice" type="number" placeholder="12000"></div>
-<div><label>Ancien prix</label><input id="pOld" type="number" placeholder="18000"></div>
-</div>
+<h2 id="prodFormTitle"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span> <span>Ajouter un produit</span></h2>
+<label>Nom du produit</label><input id="pName" placeholder="Ex: Lunettes de soleil Noir">
+<div class="row"><div><label>Prix (FCFA)</label><input id="pPrice" type="number" placeholder="12000"></div><div><label>Ancien prix</label><input id="pOld" type="number" placeholder="18000"></div></div>
 <label>Categorie</label><select id="pCat"></select>
 <label>Sous-categorie</label>
-<select id="pSub">
-<option value="homme">HOMME</option>
-<option value="femme">FEMME</option>
-<option value="enfants">ENFANTS</option>
-<option value="formation">FORMATION</option>
-<option value="ebook">EBOOK</option>
-<option value="abonnement">ABONNEMENT</option>
-</select>
-<label>
-<svg class="ic-sm" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-Photos du produit - Motifs <span class="motif-count" id="motifCount">0 photo</span>
-</label>
-<button type="button" class="btn-photo" onclick="document.getElementById('pPhotoFile').click()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-Ajouter des photos depuis ma galerie
-</button>
+<select id="pSub"><option value="homme">HOMME</option><option value="femme">FEMME</option><option value="enfants">ENFANTS</option><option value="formation">FORMATION</option><option value="ebook">EBOOK</option><option value="abonnement">ABONNEMENT</option></select>
+<label><svg class="ic-sm" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> Photos du produit - Motifs <span class="motif-count" id="motifCount">0 photo</span></label>
+<button type="button" class="btn-photo" onclick="document.getElementById('pPhotoFile').click()"><svg class="ic" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> Ajouter des photos depuis ma galerie</button>
 <input type="file" id="pPhotoFile" accept="image/*" multiple onchange="onPhotosPick(event)">
 <div class="motifs-wrap" id="motifsWrap"></div>
 <div class="photo-hint">Choisis 1 a 5 photos. La 1ere = photo principale. Clique sur X pour enlever un motif.</div>
-<button type="button" class="btn-dark" id="clearMotifsBtn" onclick="clearAllMotifs()" style="padding:10px;font-size:12px">
-<svg class="ic-sm" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-Retirer toutes les photos
-</button>
-<label>
-<svg class="ic-sm" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-Ou coller un lien image
-</label>
-<div class="row">
-<div><input id="pImg" placeholder="https://..."></div>
-<div><button type="button" class="btn-blue" style="margin-top:0" onclick="addLinkAsMotif()">Ajouter ce lien comme motif</button></div>
-</div>
+<button type="button" class="btn-dark" onclick="clearAllMotifs()" style="padding:10px;font-size:12px"><svg class="ic-sm" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Retirer toutes les photos</button>
+<label>Ou coller un lien image</label>
+<div class="row"><div><input id="pImg" placeholder="https://..."></div><div><button type="button" class="btn-blue" style="margin-top:0" onclick="addLinkAsMotif()">Ajouter ce lien comme motif</button></div></div>
 <label>Stock / Info</label><input id="pStock" placeholder="En stock">
-<button class="btn-green" id="prodSaveBtn" onclick="saveProduct()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-Ajouter le produit
-</button>
-<button class="btn-dark hidden" id="prodCancelBtn" onclick="cancelProdEdit()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-Annuler la modification
-</button>
+<button class="btn-green" id="prodSaveBtn" onclick="saveProduct()"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg> Ajouter le produit</button>
+<button class="btn-dark hidden" id="prodCancelBtn" onclick="cancelProdEdit()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Annuler la modification</button>
 </div>
 <div class="card">
-<h2>
-<span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
-Tous les produits (<span id="prodCount"></span>)
-</h2>
+<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Tous les produits (<span id="prodCount"></span>)</h2>
 <input class="search" id="searchProd" oninput="render()" placeholder="Rechercher un produit... ex: Montre, Nike...">
-<label>Filtrer par categorie</label>
-<select id="filterCat" onchange="render()"><option value="all">Toutes les categories</option></select>
+<label>Filtrer par categorie</label><select id="filterCat" onchange="render()"><option value="all">Toutes les categories</option></select>
 <div id="prodList"></div>
 </div>
 </div>
 <div class="card">
-<h2>
-<span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
-Actions
-</h2>
-<a href="index.html" class="btn-link btn-blue">
-<svg class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-Voir le site
-</a>
-<button class="btn-blue" onclick="syncNow()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-Synchroniser maintenant avec en ligne
-</button>
-<button class="btn-green" onclick="restoreBase()">
-<svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-Restaurer les anciennes categories et produits
-</button>
-<button class="btn-red" style="width:100%;margin-top:10px" onclick="resetAll()">
-<svg class="ic-sm" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-Tout reinitialiser (remettre comme au debut)
-</button>
+<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span> Actions</h2>
+<button type="button" class="btn-blue" onclick="window.location.href='index.html'"><svg class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Voir le site</button>
+<button class="btn-blue" onclick="syncNow()"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Synchroniser maintenant avec en ligne</button>
+<button class="btn-green" onclick="restoreBase()"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Restaurer les anciennes categories et produits</button>
+<button class="btn-red" style="width:100%;margin-top:10px" onclick="resetAll()"><svg class="ic-sm" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Tout reinitialiser (remettre comme au debut)</button>
 </div>
 </div>
 </div>
@@ -288,435 +208,4 @@ var BIN_ID = "6af38e8fac6210605a7e1f5a";
 var MASTER_KEY = "$2a$10$YxBmHW9ETAGom9Uh6yDL1OPBd1hYLMCC5tgt85AFlhPFFNqV7Ytju";
 var BIN_URL = "https://api.jsonbin.io/v3/b/" + BIN_ID;
 var ADMIN_PASS = "@Cedric9606";
-var IC_EDIT = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>';
-var IC_TRASH = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>';
-var IC_EYE = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
-var IC_HIDE = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.94 10.94 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/></svg>';
-var IC_BAG = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/></svg>';
-var IC_FOLDER = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>';
-var IC_IMG = '<svg class="ic-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/></svg>';
-var IC_STAR = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
-async function chargerEnLigne(){
-  try{
-    var r = await fetch(BIN_URL + "/latest", {headers:{"X-Master-Key":MASTER_KEY}});
-    var j = await r.json();
-    return j.record;
-  }catch(e){ return null; }
-}
-async function sauverEnLigne(data){
-  try{
-    var r = await fetch(BIN_URL, {method:"PUT",headers:{"Content-Type":"application/json","X-Master-Key":MASTER_KEY},body:JSON.stringify(data)});
-    return r.ok;
-  }catch(e){ return false; }
-}
-function setSync(ok){
-  var el = document.getElementById('syncStatus');
-  if(!el) return;
-  if(ok){
-    el.innerText = "En ligne - synchronise avec tous les clients";
-    el.className = "sync";
-  } else {
-    el.innerText = "Hors ligne - enregistre seulement sur ce telephone";
-    el.className = "sync offline";
-  }
-}
-async function syncNow(){
-  var ok = await sauverEnLigne(data);
-  setSync(ok);
-  if(ok) alert("Synchronise en ligne ! Tous les clients verront tes changements.");
-  else alert("Pas de connexion. Reessaie avec internet.");
-}
-var BASE_CATS = [
-{id:'chaussures',name:'Chaussures',desc:'Nike, Baskets, Classiques - Livraison 24h'},
-{id:'vetements',name:'Vetements',desc:'T-Shirt, Hoodie, Chemise - Qualite premium'},
-{id:'parfums',name:'Parfums',desc:'Homme, Femme - -30% aujourd hui'},
-{id:'montres',name:'Montres',desc:'Chrono, Connectee, Cuir - Garantie'},
-{id:'digital',name:'Produits Digital',desc:'Formation, Ebook, Abonnement - Recu instantane par WhatsApp'}
-];
-var BASE_PRODUCTS = [
-{id:1,name:"Sneakers Nike Air Style - Homme",cat:"chaussures",sub:"homme",price:25000,old:35000,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",stars:"*****",stock:"En stock - Plus que 5",active:true},
-{id:2,name:"Chaussures Classiques - Homme",cat:"chaussures",sub:"homme",price:18000,old:25000,img:"https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=700",stars:"****",stock:"En stock",active:true},
-{id:3,name:"Baskets Femme Tendance",cat:"chaussures",sub:"femme",price:22000,old:30000,img:"https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=700",stars:"*****",stock:"En stock",active:true},
-{id:4,name:"T-Shirt Premium Blanc - Homme",cat:"vetements",sub:"homme",price:8000,old:12000,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700",stars:"****",stock:"En stock",active:true},
-{id:5,name:"Ensemble Hoodie + Pantalon - Homme",cat:"vetements",sub:"homme",price:20000,old:28000,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700",stars:"*****",stock:"En stock - Plus que 3",active:true},
-{id:6,name:"Chemise Homme Elegante",cat:"vetements",sub:"homme",price:12000,old:17000,img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=700",stars:"****",stock:"En stock",active:true},
-{id:7,name:"Parfum Homme - Oud Royal",cat:"parfums",sub:"homme",price:15000,old:22000,img:"https://images.unsplash.com/photo-1541643600914-78b084683601?w=700",stars:"*****",stock:"En stock",active:true},
-{id:8,name:"Parfum Femme - Douceur",cat:"parfums",sub:"femme",price:14000,old:20000,img:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=700",stars:"*****",stock:"En stock",active:true},
-{id:9,name:"Parfum Homme - Intense",cat:"parfums",sub:"homme",price:18000,old:25000,img:"https://images.unsplash.com/photo-1594035910387-fea47794261f?w=700",stars:"****",stock:"En stock",active:true},
-{id:10,name:"Montre Chrono Acier - Homme",cat:"montres",sub:"homme",price:30000,old:45000,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700",stars:"*****",stock:"En stock - Plus que 2",active:true},
-{id:11,name:"Montre Connectee Sport - Homme",cat:"montres",sub:"homme",price:28000,old:40000,img:"https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=700",stars:"*****",stock:"En stock",active:true},
-{id:12,name:"Montre Classique Cuir - Homme",cat:"montres",sub:"homme",price:22000,old:32000,img:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=700",stars:"****",stock:"En stock",active:true},
-{id:13,name:"Baskets Femme Air Rose",cat:"chaussures",sub:"femme",price:24000,old:32000,img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=700",stars:"*****",stock:"En stock",active:true},
-{id:14,name:"Chaussures Enfant Sport",cat:"chaussures",sub:"enfants",price:15000,old:20000,img:"https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=700",stars:"****",stock:"En stock",active:true},
-{id:15,name:"Baskets Enfant Colorees",cat:"chaussures",sub:"enfants",price:16000,old:22000,img:"https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=700",stars:"*****",stock:"En stock - Plus que 4",active:true},
-{id:16,name:"Robe Femme Elegante",cat:"vetements",sub:"femme",price:18000,old:25000,img:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=700",stars:"*****",stock:"En stock",active:true},
-{id:17,name:"Ensemble Femme Chic",cat:"vetements",sub:"femme",price:22000,old:30000,img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700",stars:"****",stock:"En stock",active:true},
-{id:18,name:"T-Shirt Enfant Fun",cat:"vetements",sub:"enfants",price:7000,old:10000,img:"https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=700",stars:"*****",stock:"En stock",active:true},
-{id:19,name:"Ensemble Enfant - Garcon / Fille",cat:"vetements",sub:"enfants",price:12000,old:17000,img:"https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=700",stars:"****",stock:"En stock",active:true},
-{id:20,name:"Parfum Femme - Rose Eternelle",cat:"parfums",sub:"femme",price:16000,old:23000,img:"https://images.unsplash.com/photo-1541643600914-78b084683601?w=700",stars:"*****",stock:"En stock",active:true},
-{id:21,name:"Montre Femme Doree",cat:"montres",sub:"femme",price:25000,old:35000,img:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=700",stars:"*****",stock:"En stock",active:true},
-{id:22,name:"Montre Femme Elegante",cat:"montres",sub:"femme",price:22000,old:32000,img:"https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=700",stars:"****",stock:"En stock",active:true},
-{id:23,name:"Montre Enfant Coloree",cat:"montres",sub:"enfants",price:12000,old:18000,img:"https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=700",stars:"*****",stock:"En stock",active:true},
-{id:24,name:"Montre Enfant Sport",cat:"montres",sub:"enfants",price:13000,old:19000,img:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=700",stars:"****",stock:"En stock",active:true},
-{id:30,name:"Formation E-Commerce - Gagner sur WhatsApp",cat:"digital",sub:"formation",price:15000,old:30000,img:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700",stars:"*****",stock:"Acces immediat - 100% Digital",active:true},
-{id:31,name:"Formation Canva Pro + Design",cat:"digital",sub:"formation",price:10000,old:20000,img:"https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=700",stars:"*****",stock:"Acces immediat",active:true},
-{id:32,name:"Ebook : Business au Benin - 50 Idees",cat:"digital",sub:"ebook",price:5000,old:10000,img:"https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=700",stars:"****",stock:"PDF instantane",active:true},
-{id:33,name:"Ebook : Devenir Vendeur Pro",cat:"digital",sub:"ebook",price:7000,old:14000,img:"https://images.unsplash.com/photo-1512820790803-83ca734da794?w=700",stars:"*****",stock:"PDF instantane",active:true},
-{id:34,name:"Abonnement Canva Pro - 1 Mois",cat:"digital",sub:"abonnement",price:6000,old:12000,img:"https://images.unsplash.com/photo-1626785774573-4b799315345d?w=700",stars:"*****",stock:"Activation en 5 min",active:true},
-{id:35,name:"Abonnement Netflix / Disney - 1 Mois",cat:"digital",sub:"abonnement",price:8000,old:15000,img:"https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=700",stars:"****",stock:"Activation en 5 min",active:true}
-];
-var stored = null;
-try{ stored = JSON.parse(localStorage.getItem('cedric_admin')||'null'); }catch(e){ stored = null; }
-if(!stored || !stored.productsFull || !stored.productsFull.length || !stored.cats || !stored.cats.length){
-  stored = {promo:{}, hero:{}, cats:JSON.parse(JSON.stringify(BASE_CATS)), productsFull:JSON.parse(JSON.stringify(BASE_PRODUCTS))};
-  try{ localStorage.setItem('cedric_admin', JSON.stringify(stored)); }catch(e){}
-}
-var data = stored;
-var editingCatId = null;
-var editingProdId = null;
-var pendingMotifs = [];
-async function save(msg){
-  try{ localStorage.setItem('cedric_admin', JSON.stringify(data)); }
-  catch(e){ alert('Trop de photos ! Enleve 1-2 motifs et reessaie.'); return false; }
-  var ok = await sauverEnLigne(data);
-  setSync(ok);
-  if(!ok) alert("Enregistre sur ce telephone, mais PAS en ligne. Clique sur Synchroniser quand tu auras internet.");
-  if(msg) alert(msg);
-  render();
-  return true;
-}
-async function login(){
-  var v = document.getElementById('pass').value;
-  if(v === ADMIN_PASS){
-    document.getElementById('login').classList.add('hidden');
-    document.getElementById('panel').classList.remove('hidden');
-    var online = await chargerEnLigne();
-    if(online && online.productsFull && online.productsFull.length && online.cats && online.cats.length){
-      data = online;
-      try{ localStorage.setItem('cedric_admin', JSON.stringify(data)); }catch(e){}
-      setSync(true);
-    } else {
-      setSync(false);
-      await sauverEnLigne(data);
-      setSync(true);
-    }
-    render();
-  } else {
-    alert('Mot de passe faux.');
-  }
-}
-function showTab(t){
-  var tabs = ['promo','cats','prods'];
-  for(var i=0;i<tabs.length;i++){
-    var x = tabs[i];
-    document.getElementById('tab-'+x).classList.toggle('hidden', x!==t);
-    document.getElementById('tabBtn-'+x).classList.toggle('active', x===t);
-  }
-}
-function savePromo(){
-  data.promo = {};
-  data.promo.title = document.getElementById('promoTitle').value;
-  data.promo.sub = document.getElementById('promoSub').value;
-  data.promo.badge = document.getElementById('promoBadge').value;
-  save('Promo enregistree ! Va voir sur le site.');
-}
-function saveHero(){
-  data.hero = {};
-  data.hero.l1 = document.getElementById('hero1').value;
-  data.hero.l2 = document.getElementById('hero2').value;
-  data.hero.l3 = document.getElementById('hero3').value;
-  save('Titre enregistre !');
-}
-function renderMotifs(){
-  var wrap = document.getElementById('motifsWrap');
-  document.getElementById('motifCount').innerText = pendingMotifs.length + ' photo(s)';
-  if(!pendingMotifs.length){
-    wrap.innerHTML = '<div class="motif-empty">Aucune photo pour le moment. Choisis des photos dans ta galerie ou colle un lien.</div>';
-    return;
-  }
-  var h = '';
-  for(var i=0;i<pendingMotifs.length;i++){
-    var label = (i===0 ? 'PRINCIPALE' : 'Motif ' + (i+1));
-    var cls = (i===0 ? 'motif-item main' : 'motif-item');
-    h += '<div class="'+cls+'"><img src="'+pendingMotifs[i]+'">';
-    h += '<span class="num">'+IC_STAR+label+'</span>';
-    h += '<button type="button" class="del" onclick="removeMotif('+i+')">X</button></div>';
-  }
-  wrap.innerHTML = h;
-}
-function removeMotif(index){ pendingMotifs.splice(index,1); renderMotifs(); }
-function clearAllMotifs(){
-  if(!confirm('Retirer toutes les photos de ce produit ?')) return;
-  pendingMotifs = [];
-  renderMotifs();
-}
-function addLinkAsMotif(){
-  var link = document.getElementById('pImg').value.trim();
-  if(!link) return alert('Colle d abord un lien dans le champ.');
-  if(pendingMotifs.length>=5) return alert('Maximum 5 motifs.');
-  pendingMotifs.push(link);
-  document.getElementById('pImg').value='';
-  renderMotifs();
-}
-function onPhotosPick(event){
-  var files = Array.from(event.target.files||[]);
-  if(!files.length) return;
-  var toAdd = files.slice(0, 5 - pendingMotifs.length);
-  if(files.length > toAdd.length) alert('Maximum 5 motifs par produit.');
-  toAdd.forEach(function(file){
-    if(!file.type.startsWith('image/')) return;
-    var reader = new FileReader();
-    reader.onload = function(e){
-      var img = new Image();
-      img.onload = function(){
-        var canvas = document.createElement('canvas');
-        var max = 800;
-        var w = img.width, h = img.height;
-        if(w > h && w > max){ h = h * max / w; w = max; }
-        if(h > w && h > max){ w = w * max / h; h = max; }
-        canvas.width = w;
-        canvas.height = h;
-        canvas.getContext('2d').drawImage(img,0,0,w,h);
-        pendingMotifs.push(canvas.toDataURL('image/jpeg',0.82));
-        renderMotifs();
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
-  event.target.value='';
-}
-function saveCategory(){
-  var name = document.getElementById('catName').value.trim();
-  var id = document.getElementById('catId').value.trim().toLowerCase().replace(/ /g,'');
-  var desc = document.getElementById('catDesc').value.trim();
-  if(!name||!id) return alert('Mets le nom + l ID');
-  if(editingCatId){
-    var c = null;
-    for(var i=0;i<data.cats.length;i++){
-      if(data.cats[i].id===editingCatId) c = data.cats[i];
-    }
-    if(c){ c.name = name; c.desc = desc; }
-    save('Categorie modifiee !');
-  } else {
-    var exists = false;
-    for(var j=0;j<data.cats.length;j++){
-      if(data.cats[j].id===id) exists = true;
-    }
-    if(exists) return alert('Cet ID existe deja');
-    data.cats.push({id:id,name:name,desc:desc});
-    save('Categorie ajoutee !');
-  }
-  cancelCatEdit();
-}
-function editCategory(id){
-  var c = null;
-  for(var i=0;i<data.cats.length;i++){
-    if(data.cats[i].id===id) c = data.cats[i];
-  }
-  if(!c) return;
-  editingCatId = id;
-  document.getElementById('catName').value = c.name;
-  document.getElementById('catId').value = c.id;
-  document.getElementById('catDesc').value = c.desc||'';
-  document.getElementById('catFormTitle').innerText = 'Modifier la categorie : ' + c.name;
-  document.getElementById('catSaveBtn').innerText = 'Enregistrer la modification';
-  document.getElementById('catFormCard').classList.add('edit-box');
-  document.getElementById('catCancelBtn').classList.remove('hidden');
-  showTab('cats');
-  document.getElementById('catFormCard').scrollIntoView({behavior:'smooth'});
-}
-function cancelCatEdit(){
-  editingCatId = null;
-  document.getElementById('catName').value = '';
-  document.getElementById('catId').value = '';
-  document.getElementById('catDesc').value = '';
-  document.getElementById('catFormTitle').innerText = 'Ajouter une categorie';
-  document.getElementById('catSaveBtn').innerText = 'Ajouter la categorie';
-  document.getElementById('catFormCard').classList.remove('edit-box');
-  document.getElementById('catCancelBtn').classList.add('hidden');
-}
-function delCategory(id){
-  if(!confirm('Supprimer cette categorie ? Ses produits seront aussi supprimes.')) return;
-  data.cats = data.cats.filter(function(c){ return c.id!==id; });
-  data.productsFull = data.productsFull.filter(function(p){ return p.cat!==id; });
-  save('Categorie supprimee.');
-}
-function saveProduct(){
-  var name = document.getElementById('pName').value.trim();
-  var price = +document.getElementById('pPrice').value||0;
-  var old = +document.getElementById('pOld').value||0;
-  var cat = document.getElementById('pCat').value;
-  var sub = document.getElementById('pSub').value;
-  var linkLeft = document.getElementById('pImg').value.trim();
-  if(linkLeft && pendingMotifs.length<5) pendingMotifs.push(linkLeft);
-  if(!pendingMotifs.length){
-    pendingMotifs = ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700'];
-  }
-  var img = pendingMotifs[0];
-  var motifs = pendingMotifs.slice();
-  var stock = document.getElementById('pStock').value||'En stock';
-  if(!name||!price) return alert('Mets le nom + le prix');
-  if(editingProdId){
-    var p = null;
-    for(var i=0;i<data.productsFull.length;i++){
-      if(data.productsFull[i].id===editingProdId) p = data.productsFull[i];
-    }
-    if(p){
-      p.name = name; p.price = price; p.old = old;
-      p.cat = cat; p.sub = sub; p.img = img;
-      p.motifs = motifs; p.stock = stock;
-    }
-    if(save('Produit modifie !')) cancelProdEdit();
-  } else {
-    data.productsFull.push({id:Date.now(), name:name, price:price, old:old, cat:cat, sub:sub, img:img, motifs:motifs, stars:'*****', stock:stock, active:true});
-    if(save('Produit ajoute ! Tes '+motifs.length+' photos sont sur le site.')) cancelProdEdit();
-  }
-}
-function editProduct(id){
-  var p = null;
-  for(var i=0;i<data.productsFull.length;i++){
-    if(data.productsFull[i].id===id) p = data.productsFull[i];
-  }
-  if(!p) return;
-  editingProdId = id;
-  if(p.motifs && p.motifs.length) pendingMotifs = p.motifs.slice();
-  else pendingMotifs = [p.img];
-  document.getElementById('pName').value = p.name;
-  document.getElementById('pPrice').value = p.price;
-  document.getElementById('pOld').value = p.old;
-  document.getElementById('pCat').value = p.cat;
-  document.getElementById('pSub').value = p.sub;
-  document.getElementById('pImg').value = '';
-  document.getElementById('pStock').value = p.stock;
-  renderMotifs();
-  document.getElementById('prodFormTitle').innerText = 'Modifier : ' + p.name;
-  document.getElementById('prodSaveBtn').innerText = 'Enregistrer la modification';
-  document.getElementById('prodFormCard').classList.add('edit-box');
-  document.getElementById('prodCancelBtn').classList.remove('hidden');
-  showTab('prods');
-  document.getElementById('prodFormCard').scrollIntoView({behavior:'smooth'});
-}
-function cancelProdEdit(){
-  editingProdId = null;
-  pendingMotifs = [];
-  renderMotifs();
-  document.getElementById('pName').value = '';
-  document.getElementById('pPrice').value = '';
-  document.getElementById('pOld').value = '';
-  document.getElementById('pImg').value = '';
-  document.getElementById('pStock').value = '';
-  document.getElementById('pPhotoFile').value = '';
-  document.getElementById('prodFormTitle').innerText = 'Ajouter un produit';
-  document.getElementById('prodSaveBtn').innerText = 'Ajouter le produit';
-  document.getElementById('prodFormCard').classList.remove('edit-box');
-  document.getElementById('prodCancelBtn').classList.add('hidden');
-}
-function delProduct(id){
-  if(!confirm('Supprimer ce produit du site ?')) return;
-  data.productsFull = data.productsFull.filter(function(p){ return p.id!==id; });
-  save('Produit supprime.');
-}
-function toggleProduct(id){
-  var p = null;
-  for(var i=0;i<data.productsFull.length;i++){
-    if(data.productsFull[i].id===id) p = data.productsFull[i];
-  }
-  if(!p) return;
-  if(p.active===false) p.active = true;
-  else p.active = false;
-  if(p.active) save('Produit reactive.');
-  else save('Produit masque sur le site.');
-}
-async function restoreBase(){
-  if(!confirm('Remettre les 5 categories et les 35 produits d origine ?')) return;
-  data.cats = JSON.parse(JSON.stringify(BASE_CATS));
-  data.productsFull = JSON.parse(JSON.stringify(BASE_PRODUCTS));
-  await save('Categories et produits d origine restaures !');
-}
-async function resetAll(){
-  if(!confirm('Remettre TOUT comme au debut ?')) return;
-  data = {promo:{},hero:{},cats:JSON.parse(JSON.stringify(BASE_CATS)),productsFull:JSON.parse(JSON.stringify(BASE_PRODUCTS))};
-  await sauverEnLigne(data);
-  localStorage.removeItem('cedric_admin');
-  location.reload();
-}
-function render(){
-  document.getElementById('promoTitle').value = data.promo.title||'';
-  document.getElementById('promoSub').value = data.promo.sub||'';
-  document.getElementById('promoBadge').value = data.promo.badge||'';
-  document.getElementById('hero1').value = data.hero.l1||'';
-  document.getElementById('hero2').value = data.hero.l2||'';
-  document.getElementById('hero3').value = data.hero.l3||'';
-  var activeCount = 0;
-  for(var a=0;a<data.productsFull.length;a++){
-    if(data.productsFull[a].active!==false) activeCount++;
-  }
-  document.getElementById('countBadge').innerText = activeCount + ' produits actifs';
-  document.getElementById('statCats').innerText = data.cats.length;
-  document.getElementById('statProds').innerText = data.productsFull.length;
-  document.getElementById('statActive').innerText = activeCount;
-  var catOpts = '';
-  for(var i=0;i<data.cats.length;i++){
-    catOpts += '<option value="'+data.cats[i].id+'">'+data.cats[i].name+'</option>';
-  }
-  document.getElementById('pCat').innerHTML = catOpts;
-  var filter = document.getElementById('filterCat');
-  var cur = filter.value||'all';
-  filter.innerHTML = '<option value="all">Toutes les categories</option>' + catOpts;
-  filter.value = cur;
-  var catHtml = '';
-  for(var c=0;c<data.cats.length;c++){
-    var cat = data.cats[c];
-    var nb = 0;
-    for(var k=0;k<data.productsFull.length;k++){
-      if(data.productsFull[k].cat===cat.id) nb++;
-    }
-    catHtml += '<div class="prod"><div><b>'+IC_FOLDER+cat.name+'</b>';
-    catHtml += '<small>'+(cat.desc||'')+' - '+nb+' produit(s) - ID: '+cat.id+'</small></div>';
-    catHtml += '<div class="btns">';
-    catHtml += '<button class="btn-edit" onclick="editCategory(\''+cat.id+'\')">'+IC_EDIT+' Modifier</button>';
-    catHtml += '<button class="btn-red" onclick="delCategory(\''+cat.id+'\')">'+IC_TRASH+' Supprimer</button>';
-    catHtml += '</div></div>';
-  }
-  document.getElementById('catList').innerHTML = catHtml;
-  var q = (document.getElementById('searchProd').value||'').toLowerCase();
-  var f = filter.value||'all';
-  var list = [];
-  for(var p=0;p<data.productsFull.length;p++){
-    var prod = data.productsFull[p];
-    var okCat = (f==='all' || prod.cat===f);
-    var okName = prod.name.toLowerCase().indexOf(q)!==-1;
-    if(okCat && okName) list.push(prod);
-  }
-  if(!list.length){
-    document.getElementById('prodList').innerHTML = '<p style="margin-top:10px">Aucun produit trouve.</p>';
-    return;
-  }
-  var html = '';
-  for(var n=0;n<list.length;n++){
-    var pr = list[n];
-    var nbMotifs = 1;
-    if(pr.motifs && pr.motifs.length) nbMotifs = pr.motifs.length;
-    var cls = 'prod';
-    if(pr.active===false) cls = 'prod off';
-    var masque = '';
-    if(pr.active===false) masque = ' - MASQUE';
-    var btnAff = IC_HIDE + ' Masquer';
-    if(pr.active===false) btnAff = IC_EYE + ' Afficher';
-    html += '<div class="'+cls+'"><img src="'+pr.img+'">';
-    html += '<div><b>'+IC_BAG+pr.name+masque+'</b>';
-    html += '<small>'+pr.price.toLocaleString()+' FCFA - '+pr.cat+' / '+pr.sub+'</small>';
-    html += '<small>'+IC_IMG+nbMotifs+' motif(s) - '+(pr.stock||'')+'</small></div>';
-    html += '<div class="btns">';
-    html += '<button class="btn-edit" onclick="editProduct('+pr.id+')">'+IC_EDIT+' Modifier</button>';
-    html += '<button class="btn-dark" onclick="toggleProduct('+pr.id+')">'+btnAff+'</button>';
-    html += '<button class="btn-red" onclick="delProduct('+pr.id+')">'+IC_TRASH+'</button>';
-    html += '</div></div>';
-  }
-  document.getElementById('prodList').innerHTML = html;
-}
-renderMotifs();
-</script>
-</body>
-</html>
+var IC_EDIT = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5
