@@ -77,10 +77,10 @@ CEDRIC<span>SHOP</span> ADMIN
 </h1>
 <p>Gere tout ton site ici</p>
 <div class="card">
-<label><svg class="ic-sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Mot de passe</label>
+<label>Mot de passe</label>
 <input id="pass" type="password" placeholder="....">
-<button class="btn-blue" onclick="login()"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg> Entrer</button>
-<button type="button" class="btn-dark" onclick="window.location.href='index.html'"><svg class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Voir le site</button>
+<button class="btn-blue" onclick="login()">Entrer</button>
+<button type="button" class="btn-dark" onclick="window.location.href='index.html'">Voir le site</button>
 </div>
 </div>
 <div id="panel" class="hidden">
@@ -91,35 +91,35 @@ CEDRIC<span>SHOP</span> ADMIN
 <div class="wrap">
 <div class="sync" id="syncStatus">En ligne - synchronise avec tous les clients</div>
 <div class="stat-row">
-<div class="stat"><b id="statCats">5</b><span><svg class="ic-sm" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg> Categories</span></div>
-<div class="stat"><b id="statProds">0</b><span><svg class="ic-sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Produits</span></div>
-<div class="stat"><b id="statActive">0</b><span><svg class="ic-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg> En ligne</span></div>
+<div class="stat"><b id="statCats">5</b><span>Categories</span></div>
+<div class="stat"><b id="statProds">0</b><span>Produits</span></div>
+<div class="stat"><b id="statActive">0</b><span>En ligne</span></div>
 </div>
 <div class="tabs">
-<button id="tabBtn-promo" class="active" onclick="showTab('promo')"><svg class="ic" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg> Promo</button>
-<button id="tabBtn-banner" onclick="showTab('banner')"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg> Banniere</button>
-<button id="tabBtn-cats" onclick="showTab('cats')"><svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg> Categories</button>
-<button id="tabBtn-prods" onclick="showTab('prods')"><svg class="ic" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Produits</button>
+<button id="tabBtn-promo" class="active" onclick="showTab('promo')">Promo</button>
+<button id="tabBtn-banner" onclick="showTab('banner')">Banniere</button>
+<button id="tabBtn-cats" onclick="showTab('cats')">Categories</button>
+<button id="tabBtn-prods" onclick="showTab('prods')">Produits</button>
 </div>
 <div id="tab-promo">
 <div class="card">
-<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/></svg></span> Annonce Promotion</h2>
+<h2>Annonce Promotion</h2>
 <label>Titre promo</label><input id="promoTitle" placeholder="-30% Aujourd'hui">
-<label>Sous-titre promo</label><input id="promoSub" placeholder="Sur toutes les montres & parfums">
+<label>Sous-titre promo</label><input id="promoSub" placeholder="Sur toutes les montres et parfums">
 <label>Badge en haut</label><input id="promoBadge" placeholder="-30% AUJOURD'HUI">
-<button class="btn-blue" onclick="savePromo()"><svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg> Enregistrer la promo</button>
+<button class="btn-blue" onclick="savePromo()">Enregistrer la promo</button>
 </div>
 <div class="card">
-<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg></span> Titre du haut</h2>
+<h2>Titre du haut</h2>
 <label>Ligne 1</label><input id="hero1" placeholder="LE STYLE QUI">
 <label>Ligne 2</label><input id="hero2" placeholder="TE RESSEMBLE,">
 <label>Ligne 3 (en bleu)</label><input id="hero3" placeholder="AU MEILLEUR PRIX.">
-<button class="btn-blue" onclick="saveHero()"><svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg> Enregistrer le titre</button>
+<button class="btn-blue" onclick="saveHero()">Enregistrer le titre</button>
 </div>
 </div>
 <div id="tab-banner" class="hidden">
 <div class="card">
-<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/></svg></span> Banniere 1 - Bleue</h2>
+<h2>Banniere 1 - Bleue</h2>
 <label>Titre</label><input id="b1Title" placeholder="LIVRAISON GRATUITE des 30 000 FCFA">
 <label>Sous-titre</label><input id="b1Sub" placeholder="Commande aujourd'hui, recois demain...">
 <label>Texte du bouton</label><input id="b1Btn" placeholder="En profiter">
@@ -127,7 +127,7 @@ CEDRIC<span>SHOP</span> ADMIN
 <div class="banner-preview" id="b1Prev" style="background:linear-gradient(135deg,#0B6CFF,#00C2FF)"><b>Apercu Banniere 1</b><span>Change le texte, l'apercu change.</span></div>
 </div>
 <div class="card">
-<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/></svg></span> Banniere 2 - Noire</h2>
+<h2>Banniere 2 - Noire</h2>
 <label>Titre</label><input id="b2Title" placeholder="NOUVEAUTE : PRODUITS DIGITAL">
 <label>Sous-titre</label><input id="b2Sub" placeholder="Formation, Ebook, Abonnement...">
 <label>Texte du bouton</label><input id="b2Btn" placeholder="Voir le Digital">
@@ -135,19 +135,19 @@ CEDRIC<span>SHOP</span> ADMIN
 <div class="banner-preview" id="b2Prev" style="background:linear-gradient(135deg,#050E24,#0A2A66)"><b>Apercu Banniere 2</b><span>Change le texte, l'apercu change.</span></div>
 </div>
 <div class="card">
-<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/></svg></span> Banniere 3 - Verte</h2>
+<h2>Banniere 3 - Verte</h2>
 <label>Titre</label><input id="b3Title" placeholder="PAIEMENT MOMO OU A LA LIVRAISON">
 <label>Sous-titre</label><input id="b3Sub" placeholder="Tu paies comme tu veux...">
 <label>Texte du bouton</label><input id="b3Btn" placeholder="Commander sur WhatsApp">
 <label>Grand texte a droite</label><input id="b3Big" placeholder="24h">
 <div class="banner-preview" id="b3Prev" style="background:linear-gradient(135deg,#25D366,#0a9d3a)"><b>Apercu Banniere 3</b><span>Change le texte, l'apercu change.</span></div>
 </div>
-<button class="btn-blue" onclick="saveBanners()"><svg class="ic" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg> Enregistrer les 3 bannieres</button>
+<button class="btn-blue" onclick="saveBanners()">Enregistrer les 3 bannieres</button>
 <button class="btn-dark" onclick="resetBanners()">Remettre les bannieres d'origine</button>
 </div>
 <div id="tab-cats" class="hidden">
 <div class="card" id="catFormCard">
-<h2 id="catFormTitle"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span> <span>Ajouter une categorie</span></h2>
+<h2 id="catFormTitle"><span>Ajouter une categorie</span></h2>
 <label>Nom</label><input id="catName" placeholder="Ex: Lunettes">
 <label>ID (minuscule, sans espace)</label><input id="catId" placeholder="Ex: lunettes">
 <label>Description</label><input id="catDesc" placeholder="Ex: Lunettes de soleil - Livraison 24h">
@@ -159,63 +159,63 @@ CEDRIC<span>SHOP</span> ADMIN
 <button type="button" class="btn-dark" onclick="removeCatPhoto()" style="padding:10px;font-size:12px">Retirer la photo</button>
 <label>Ou coller un lien image pour la categorie</label>
 <div class="row"><div><input id="catImgLink" placeholder="https://..."></div><div><button type="button" class="btn-blue" style="margin-top:0" onclick="addCatLink()">Utiliser ce lien</button></div></div>
-<button class="btn-green" id="catSaveBtn" onclick="saveCategory()"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg> Ajouter la categorie</button>
-<button class="btn-dark hidden" id="catCancelBtn" onclick="cancelCatEdit()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Annuler la modification</button>
+<button class="btn-green" id="catSaveBtn" onclick="saveCategory()">Ajouter la categorie</button>
+<button class="btn-dark hidden" id="catCancelBtn" onclick="cancelCatEdit()">Annuler la modification</button>
 </div>
 <div class="card">
-<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></span> Toutes les categories (<span id="catCount"></span>)</h2>
+<h2>Toutes les categories (<span id="catCount"></span>)</h2>
 <div id="catList"></div>
 </div>
 </div>
 <div id="tab-prods" class="hidden">
 <div class="card" id="prodFormCard">
-<h2 id="prodFormTitle"><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span> <span>Ajouter un produit</span></h2>
+<h2 id="prodFormTitle"><span>Ajouter un produit</span></h2>
 <label>Nom du produit</label><input id="pName" placeholder="Ex: Lunettes de soleil Noir">
 <div class="row"><div><label>Prix (FCFA)</label><input id="pPrice" type="number" placeholder="12000"></div><div><label>Ancien prix</label><input id="pOld" type="number" placeholder="18000"></div></div>
 <label>Categorie</label><select id="pCat"></select>
 <label>Sous-categorie</label>
 <select id="pSub"><option value="homme">HOMME</option><option value="femme">FEMME</option><option value="enfants">ENFANTS</option><option value="formation">FORMATION</option><option value="ebook">EBOOK</option><option value="abonnement">ABONNEMENT</option></select>
-<label><svg class="ic-sm" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> Photos du produit - Motifs <span class="motif-count" id="motifCount">0 photo</span></label>
-<button type="button" class="btn-photo" onclick="document.getElementById('pPhotoFile').click()"><svg class="ic" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> Ajouter des photos depuis ma galerie</button>
+<label>Photos du produit - Motifs <span class="motif-count" id="motifCount">0 photo</span></label>
+<button type="button" class="btn-photo" onclick="document.getElementById('pPhotoFile').click()">Ajouter des photos depuis ma galerie</button>
 <input type="file" id="pPhotoFile" accept="image/*" multiple onchange="onPhotosPick(event)">
 <div class="motifs-wrap" id="motifsWrap"></div>
 <div class="photo-hint">Choisis 1 a 5 photos. La 1ere = photo principale. Clique sur X pour enlever un motif.</div>
-<button type="button" class="btn-dark" onclick="clearAllMotifs()" style="padding:10px;font-size:12px"><svg class="ic-sm" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Retirer toutes les photos</button>
+<button type="button" class="btn-dark" onclick="clearAllMotifs()" style="padding:10px;font-size:12px">Retirer toutes les photos</button>
 <label>Ou coller un lien image</label>
 <div class="row"><div><input id="pImg" placeholder="https://..."></div><div><button type="button" class="btn-blue" style="margin-top:0" onclick="addLinkAsMotif()">Ajouter ce lien comme motif</button></div></div>
 <label>Stock / Info</label><input id="pStock" placeholder="En stock">
-<button class="btn-green" id="prodSaveBtn" onclick="saveProduct()"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></svg> Ajouter le produit</button>
-<button class="btn-dark hidden" id="prodCancelBtn" onclick="cancelProdEdit()"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Annuler la modification</button>
+<button class="btn-green" id="prodSaveBtn" onclick="saveProduct()">Ajouter le produit</button>
+<button class="btn-dark hidden" id="prodCancelBtn" onclick="cancelProdEdit()">Annuler la modification</button>
 </div>
 <div class="card">
-<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Tous les produits (<span id="prodCount"></span>)</h2>
+<h2>Tous les produits (<span id="prodCount"></span>)</h2>
 <input class="search" id="searchProd" oninput="render()" placeholder="Rechercher un produit... ex: Montre, Nike...">
 <label>Filtrer par categorie</label><select id="filterCat" onchange="render()"><option value="all">Toutes les categories</option></select>
 <div id="prodList"></div>
 </div>
 </div>
 <div class="card">
-<h2><span class="ic-box"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span> Actions</h2>
-<button type="button" class="btn-blue" onclick="window.location.href='index.html'"><svg class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg> Voir le site</button>
-<button class="btn-blue" onclick="syncNow()"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Synchroniser maintenant avec en ligne</button>
-<button class="btn-green" onclick="restoreBase()"><svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Restaurer les anciennes categories et produits</button>
-<button class="btn-red" style="width:100%;margin-top:10px" onclick="resetAll()"><svg class="ic-sm" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Tout reinitialiser (remettre comme au debut)</button>
+<h2>Actions</h2>
+<button type="button" class="btn-blue" onclick="window.location.href='index.html'">Voir le site</button>
+<button class="btn-blue" onclick="syncNow()">Synchroniser maintenant avec en ligne</button>
+<button class="btn-green" onclick="restoreBase()">Restaurer les anciennes categories et produits</button>
+<button class="btn-red" style="width:100%;margin-top:10px" onclick="resetAll()">Tout reinitialiser (remettre comme au debut)</button>
 </div>
 </div>
-</div>
+  </div>
 <script>
 var BIN_ID = "6af38e8fac6210605a7e1f5a";
 var MASTER_KEY = "$2a$10$YxBmHW9ETAGom9Uh6yDL1OPBd1hYLMCC5tgt85AFlhPFFNqV7Ytju";
 var BIN_URL = "https://api.jsonbin.io/v3/b/" + BIN_ID;
 var ADMIN_PASS = "@Cedric9606";
-var IC_EDIT = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>';
-var IC_TRASH = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>';
-var IC_EYE = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
-var IC_HIDE = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.94 10.94 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/></svg>';
-var IC_BAG = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/></svg>';
-var IC_FOLDER = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>';
-var IC_IMG = '<svg class="ic-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/></svg>';
-var IC_STAR = '<svg class="ic-sm" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+var IC_EDIT = 'Modifier';
+var IC_TRASH = 'Supprimer';
+var IC_EYE = 'Afficher';
+var IC_HIDE = 'Masquer';
+var IC_BAG = '';
+var IC_FOLDER = '';
+var IC_IMG = '';
+var IC_STAR = '*';
 async function chargerEnLigne(){
   try{ var r = await fetch(BIN_URL + "/latest", {headers:{"X-Master-Key":MASTER_KEY}}); var j = await r.json(); return j.record; }catch(e){ return null; }
 }
@@ -262,7 +262,6 @@ var BASE_PRODUCTS = [
 {id:13,name:"Baskets Femme Air Rose",cat:"chaussures",sub:"femme",price:24000,old:32000,img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=700",stars:"*****",stock:"En stock",active:true},
 {id:14,name:"Chaussures Enfant Sport",cat:"chaussures",sub:"enfants",price:15000,old:20000,img:"https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=700",stars:"****",stock:"En stock",active:true},
 {id:15,name:"Baskets Enfant Colorees",cat:"chaussures",sub:"enfants",price:16000,old:22000,img:"https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=700",stars:"*****",stock:"En stock - Plus que 4",active:true},
-{id:16,name:"Robe Femme Elegante",cat:"vetements",sub:"femme",price:18000,old:25000,img:"https://images.unsplash.com/photo-1595777457583-95e```html
 {id:16,name:"Robe Femme Elegante",cat:"vetements",sub:"femme",price:18000,old:25000,img:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=700",stars:"*****",stock:"En stock",active:true},
 {id:17,name:"Ensemble Femme Chic",cat:"vetements",sub:"femme",price:22000,old:30000,img:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700",stars:"****",stock:"En stock",active:true},
 {id:18,name:"T-Shirt Enfant Fun",cat:"vetements",sub:"enfants",price:7000,old:10000,img:"https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=700",stars:"*****",stock:"En stock",active:true},
@@ -302,7 +301,7 @@ async function save(msg){
   return true;
 }
 async function login(){
-  var v = document.getElementById('pass').value;
+  var v = document.getElementById('pass').value.trim();
   if(v === ADMIN_PASS){
     document.getElementById('login').classList.add('hidden');
     document.getElementById('panel').classList.remove('hidden');
@@ -319,7 +318,7 @@ async function login(){
     }
     render();
   } else {
-    alert('Mot de passe faux.');
+    alert('Mot de passe faux. Tape exactement : @Cedric9606');
   }
 }
 function showTab(t){
@@ -648,14 +647,15 @@ function render(){
     var nb = 0;
     for(var k=0;k<data.productsFull.length;k++){ if(data.productsFull[k].cat===cat.id) nb++; }
     var catImg = cat.img || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700";
-    catHtml += '<div class="prod"><img src="'+catImg+'"><div><b>'+IC_FOLDER+cat.name+'</b>';
+    catHtml += '<div class="prod"><img src="'+catImg+'"><div><b>'+cat.name+'</b>';
     catHtml += '<small>'+(cat.desc||'')+' - '+nb+' produit(s) - ID: '+cat.id+'</small></div>';
     catHtml += '<div class="btns">';
-    catHtml += '<button class="btn-edit" onclick="editCategory(\''+cat.id+'\')">'+IC_EDIT+' Modifier</button>';
-    catHtml += '<button class="btn-red" onclick="delCategory(\''+cat.id+'\')">'+IC_TRASH+' Supprimer</button>';
+    catHtml += '<button class="btn-edit" onclick="editCategory(\''+cat.id+'\')">Modifier</button>';
+    catHtml += '<button class="btn-red" onclick="delCategory(\''+cat.id+'\')">Supprimer</button>';
     catHtml += '</div></div>';
   }
   document.getElementById('catList').innerHTML = catHtml;
+  document.getElementById('catCount').innerText = data.cats.length;
   var q = (document.getElementById('searchProd').value||'').toLowerCase();
   var f = filter.value||'all';
   var list = [];
@@ -665,6 +665,7 @@ function render(){
     var okName = prod.name.toLowerCase().indexOf(q)!==-1;
     if(okCat && okName) list.push(prod);
   }
+  document.getElementById('prodCount').innerText = list.length;
   if(!list.length){
     document.getElementById('prodList').innerHTML = '<p style="margin-top:10px">Aucun produit trouve.</p>';
     return;
@@ -678,16 +679,16 @@ function render(){
     if(pr.active===false) cls = 'prod off';
     var masque = '';
     if(pr.active===false) masque = ' - MASQUE';
-    var btnAff = IC_HIDE + ' Masquer';
-    if(pr.active===false) btnAff = IC_EYE + ' Afficher';
+    var btnAff = 'Masquer';
+    if(pr.active===false) btnAff = 'Afficher';
     html += '<div class="'+cls+'"><img src="'+pr.img+'">';
-    html += '<div><b>'+IC_BAG+pr.name+masque+'</b>';
+    html += '<div><b>'+pr.name+masque+'</b>';
     html += '<small>'+pr.price.toLocaleString()+' FCFA - '+pr.cat+' / '+pr.sub+'</small>';
-    html += '<small>'+IC_IMG+nbMotifs+' motif(s) - '+(pr.stock||'')+'</small></div>';
+    html += '<small>'+nbMotifs+' motif(s) - '+(pr.stock||'')+'</small></div>';
     html += '<div class="btns">';
-    html += '<button class="btn-edit" onclick="editProduct('+pr.id+')">'+IC_EDIT+' Modifier</button>';
+    html += '<button class="btn-edit" onclick="editProduct('+pr.id+')">Modifier</button>';
     html += '<button class="btn-dark" onclick="toggleProduct('+pr.id+')">'+btnAff+'</button>';
-    html += '<button class="btn-red" onclick="delProduct('+pr.id+')">'+IC_TRASH+'</button>';
+    html += '<button class="btn-red" onclick="delProduct('+pr.id+')">X</button>';
     html += '</div></div>';
   }
   document.getElementById('prodList').innerHTML = html;
