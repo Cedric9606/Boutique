@@ -731,6 +731,7 @@ function render(){
     document.getElementById('b'+bi+'Big').value = b.big||'';
   }
   updateBannerPreview();
+    renderBannerList();
   var activeCount = 0;
   for(var a=0;a<data.productsFull.length;a++){ if(data.productsFull[a].active!==false) activeCount++; }
   document.getElementById('countBadge').innerText = activeCount + ' produits actifs';
@@ -800,7 +801,6 @@ function render(){
   var el = document.getElementById(id);
   if(el) el.addEventListener('input', updateBannerPreview);
 });
-renderBannerList();
 renderMotifs();
 showCatPreview();
 </script>
