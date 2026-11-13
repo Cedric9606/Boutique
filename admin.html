@@ -145,6 +145,16 @@ CEDRIC<span>SHOP</span> ADMIN
 <button class="btn-blue" onclick="saveBanners()">Enregistrer les 3 bannieres</button>
 <button class="btn-dark" onclick="resetBanners()">Remettre les bannieres d'origine</button>
 </div>
+<div class="card">
+<h2>Bannieres - Illimitees</h2>
+<p style="opacity:.7;font-size:12px">Ajoute autant de bannieres que tu veux. Simple = texte. Image = photo publicitaire.</p>
+<div id="bannerList"></div>
+<button class="btn-green" onclick="addBanner('simple')">+ Ajouter une banniere simple (texte)</button>
+<button class="btn-blue" onclick="addBanner('image')">+ Ajouter une banniere image (publicitaire)</button>
+<button class="btn-blue" onclick="saveBanners()">Enregistrer toutes les bannieres</button>
+<button class="btn-dark" onclick="resetBanners()">Remettre les 3 bannieres d'origine</button>
+</div>
+</div>
 <div id="tab-cats" class="hidden">
 <div class="card" id="catFormCard">
 <h2 id="catFormTitle"><span>Ajouter une categorie</span></h2>
