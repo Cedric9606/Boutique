@@ -354,31 +354,125 @@ function saveHero(){
   save('Titre enregistre !');
 }
 function getBannersFromForm(){
-  var bgs = ["linear-gradient(135deg,#0B6CFF,#00C2FF)","linear-gradient(135deg,#050E24,#0A2A66)","linear-gradient(135deg,#25D366,#0a9d3a)"];
+  <script>
+function bannerColor(i){
+  var colors = ["linear-gradient(135deg,#0B6CFF,#00C2FF)","linear-gradient(135deg,#050E24,#0A2A66)","linear-gradient(135deg,#25D366,#0a9d3a)","linear-gradient(135deg,#FF6B00,#FFB800)","linear-gradient(135deg,#FF2D55,#FF6B9D)","linear-gradient(135deg,#7C3AED,#C084FC)"];
+  return colors[i % colors.length];
+}
+function bannerAction(i){
   var acts = ["cat","digital","wa"];
+  return acts[i % acts.length];
+}
+function renderBannerList(){
+  var wrap = document.getElementById('bannerList');
+  if(!wrap) return;
+  if(!data.banners || !data.banners.length) data.banners = JSON.parse(JSON.stringify(BASE_BANNERS));
+  var h = '';
+  for(var i=0;i<data.banners.length;i++){
+    var b = data.banners[i];
+    var isImg = b.img && b.img.length > 5;
+    var typeTxt = isImg ? 'Banniere IMAGE - Publicitaire' : 'Banniere SIMPLE - Texte';
+    var imgHtml = '';
+    if(isImg) imgHtml = '<img src="'+b.img+'" style="width:100%;height:130px;object-fit:cover;border-radius:12px;margin-top:8px;border:2px solid #00C2FF">';
+    h += '<div class="card" style="border-color:#00C2FF">';
+    h += '<h2>Banniere '+(i+1)+' - '+typeTxt+'</h2>';
+    h += '<label>Titre</label><input id="bbTitle'+i+'" value="'+(b.title||'').replace(/"/g,'')+'" placeholder="Ex: LIVRAISON GRATUITE">';
+    h += '<label>Sous-titre</label><input id="bbSub'+i+'" value="'+(b.sub||'').replace(/"/g,'')+'" placeholder="Ex: Commande aujourd hui...">';
+    h += '<label>Texte du bouton</label><input id="bbBtn'+i+'" value="'+(b.btn||'').replace(/"/g,'')+'" placeholder="Ex: En profiter">';
+    h += '<label>Grand texte a droite (si banniere simple)</label><input id="bbBig'+i+'" value="'+(b.big||'').replace(/"/g,'')+'" placeholder="Ex: -30%">';
+    h += '<label>Photo publicitaire (si banniere image)</label>';
+    h += '<button type="button" class="btn-photo" onclick="document.getElementById(\'bbFile'+i+'\').click()">Ajouter une photo publicitaire</button>';
+    h += '<input type="file" id="bbFile'+i+'" accept="image/*" onchange="onBannerPhotoDyn(event,'+i+')">';
+    h += '<div id="bbPhotoPrev'+i+'">'+imgHtml+'</div>';
+    h += '<label>Ou coller un lien photo</label><input id="bbImg'+i+'" value="" placeholder="https://...">';
+    h += '<div style="display:flex;gap:8px;margin-top:10px"><button type="button" class="btn-dark" onclick="makeBannerSimple('+i+')" style="flex:1">Passer en SIMPLE</button><button type="button" class="btn-blue" onclick="makeBannerImage('+i+')" style="flex:1">Passer en IMAGE</button></div>';
+    h += '<button type="button" class="btn-red" style="width:100%;margin-top:10px" onclick="delBanner('+i+')">Supprimer cette banniere</button>';
+    h += '</div>';
+  }
+  wrap.innerHTML = h;
+  for(var j=0;j<data.banners.length;j++){
+    var bj = data.banners[j];
+    if(bj.img) { var inp = document.getElementById('bbImg'+j); if(inp) inp.value = bj.img; }
+  }
+}
+function onBannerPhotoDyn(event, i){
+  var file = event.target.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e){
+    var img = new Image();
+    img.onload = function(){
+      var canvas = document.createElement('canvas');
+      var max = 900;
+      var w = img.width, h = img.height;
+      if(w > max){ h = h * max / w; w = max; }
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      var url = canvas.toDataURL('image/jpeg',0.82);
+      var inp = document.getElementById('bbImg'+i);
+      if(inp) inp.value = url;
+      var prev = document.getElementById('bbPhotoPrev'+i);
+      if(prev) prev.innerHTML = '<img src="'+url+'" style="width:100%;height:130px;object-fit:cover;border-radius:12px;margin-top:8px;border:2px solid #00C2FF">';
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  event.target.value = '';
+}
+function addBanner(type){
+  if(!data.banners) data.banners = [];
+  if(type === 'image'){
+    data.banners.push({title:"NOUVELLE PUB - OFFRE SPECIALE",sub:"Clique et commande sur WhatsApp",btn:"En profiter",big:"",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700",bg:bannerColor(data.banners.length),action:bannerAction(data.banners.length)});
+  } else {
+    data.banners.push({title:"NOUVELLE BANNIERE",sub:"Ecris ton texte ici",btn:"En profiter",big:"-30%",img:"",bg:bannerColor(data.banners.length),action:bannerAction(data.banners.length)});
+  }
+  saveBannersSilent();
+  renderBannerList();
+}
+function delBanner(i){
+  if(!confirm('Supprimer cette banniere ?')) return;
+  data.banners.splice(i,1);
+  saveBannersSilent();
+  renderBannerList();
+}
+function makeBannerSimple(i){
+  var inp = document.getElementById('bbImg'+i);
+  if(inp) inp.value = '';
+  var prev = document.getElementById('bbPhotoPrev'+i);
+  if(prev) prev.innerHTML = '';
+  alert('Banniere passee en SIMPLE. Mets un Grand texte et Enregistre.');
+}
+function makeBannerImage(i){
+  alert('Banniere passee en IMAGE. Ajoute une photo puis Enregistre.');
+}
+function getBannersFromForm(){
   var out = [];
-  for(var i=1;i<=3;i++){
-    out.push({title:document.getElementById('b'+i+'Title').value, sub:document.getElementById('b'+i+'Sub').value, btn:document.getElementById('b'+i+'Btn').value, big:document.getElementById('b'+i+'Big').value, bg:bgs[i-1], action:acts[i-1]});
+  for(var i=0;i<data.banners.length;i++){
+    var t = document.getElementById('bbTitle'+i);
+    if(!t) continue;
+    var imgVal = document.getElementById('bbImg'+i) ? document.getElementById('bbImg'+i).value : (data.banners[i].img||'');
+    out.push({title:t.value, sub:document.getElementById('bbSub'+i).value, btn:document.getElementById('bbBtn'+i).value, big:document.getElementById('bbBig'+i).value, img:imgVal, bg:data.banners[i].bg||bannerColor(i), action:data.banners[i].action||bannerAction(i)});
   }
   return out;
 }
 function saveBanners(){
   data.banners = getBannersFromForm();
-  save('Bannieres enregistrees ! Va voir sur le site, elles ont change.');
+  save('Bannieres enregistrees ! Tu as maintenant '+data.banners.length+' bannieres.');
+}
+async function saveBannersSilent(){
+  data.banners = getBannersFromForm();
+  try{ localStorage.setItem('cedric_admin', JSON.stringify(data)); }catch(e){}
+  var ok = await sauverEnLigne(data);
+  setSync(ok);
 }
 function resetBanners(){
   if(!confirm('Remettre les 3 bannieres d origine ?')) return;
   data.banners = JSON.parse(JSON.stringify(BASE_BANNERS));
   save('Bannieres d origine remises.');
+  renderBannerList();
 }
-function updateBannerPreview(){
-  for(var i=1;i<=3;i++){
-    var t = document.getElementById('b'+i+'Title').value;
-    var s = document.getElementById('b'+i+'Sub').value;
-    var prev = document.getElementById('b'+i+'Prev');
-    if(prev) prev.innerHTML = '<b>'+(t||'Titre banniere '+i)+'</b><span>'+(s||'Sous-titre')+'</span>';
-  }
-}
+function updateBannerPreview(){}
+  
 function onCatPhotoPick(event){
   var file = event.target.files[0];
   if(!file) return;
