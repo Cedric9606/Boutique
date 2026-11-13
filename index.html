@@ -301,6 +301,10 @@ function renderBanner(){
   if(!track) return;
   track.innerHTML=currentBanners.map(function(b){
     var fn = b.action==='digital' ? "openCategory('digital')" : b.action==='wa' ? "window.open('https://wa.me/22997000000?text=Bonjour CEDRIC SHOP, je veux commander','_blank')" : "document.getElementById('categories').scrollIntoView({behavior:'smooth'})";
+    var hasImg = b.img && b.img.length > 5;
+    if(hasImg){
+      return '<div class="banner-slide" style="background-image:url('+b.img+');background-size:cover;background-position:center;position:relative;overflow:hidden"><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,14,36,.88),rgba(5,14,36,.20))"></div><div style="position:relative;z-index:2"><b>'+b.title+'</b><span>'+b.sub+'</span><button class="b-btn" onclick="'+fn+'">'+b.btn+' →</button></div></div>';
+    }
     return '<div class="banner-slide" style="background:'+b.bg+'"><div><b>'+b.title+'</b><span>'+b.sub+'</span><button class="b-btn" onclick="'+fn+'">'+b.btn+' →</button></div><div class="b-big">'+b.big+'</div></div>';
   }).join('');
   var dots=document.getElementById('bannerDots');
